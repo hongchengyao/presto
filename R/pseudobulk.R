@@ -16,7 +16,7 @@ collapse_counts <- function (counts_mat, meta_data, varnames, min_cells_per_grou
     keep_n=TRUE, how = c("sum", "mean")[1], get_nnz=FALSE, get_norm=TRUE) 
 {
     res <- list()
-    hash <- compute_hash(meta_data, varnames)
+    hash <- compute_hash(meta_data, varnames) # generate hash-like index for all meta data variable levels, not necessarily continuous from 0 to N
     idx_keep <- which(!is.na(hash))
     hash <- hash[idx_keep]
     hash <- factor(sprintf("sample_%d", as.integer(hash)))
